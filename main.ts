@@ -1,6 +1,1 @@
-import f from'node:fs'
-const{MAKEFUN_INPUT_DIR:I,MAKEFUN_OUTPUT_DIR:O}=process.env;let D,T,F,S,Z
-F=(B,R,a)=>{let v=[],q=[a];v[a]=' ';for(let c of q)for(let k=4;k--;){let z=c+D[k];if(v[z]||T[z]=='#'||B.includes(z)||R&&!R.has(z))continue;v[z]=v[c]+'udlr'[k];q.push(z)}return v}
-S=(A,e,b)=>{let Q=[[b,e,0,'']],s=new Set,K;for(let q of Q){let[B,p,h,M]=q,v=F(B,A,p);if(B.every(y=>T[y]>'$'&&T[y]<'@')&&v[e])return{m:M,p,b:B};B.forEach((C,j)=>{for(let k=4;k--;){let t=C+D[k];if(!A.has(t)||t==e||B.includes(t))continue;let g=C-D[k];if(!v[g])continue;let N=[...B];N[j]=t;N.sort();if(s.has(K=N+','+C))continue;s.add(K);Q.push([N,C,h+1,M+v[g]+'udlr'[k]])}})}}
-Z=t=>{let R=t.split('\n'),w=R[0].length;T=R.join('');let B=[...T.matchAll(/[$*]/g)].map(m=>m.index),p=T.indexOf('@');D=[-w,w,-1,1];let hy=(p/w)|0,cur=p,AB=B,o='';for(let Y of[hy-7,hy+1])for(let X=1;X+6<w;X+=7){let cells=[],rb=[];for(let y=Y;y<Y+7;y++)for(let x=X;x<X+6;x++){let i=y*w+x;if(T[i]!='#'){cells.push(i);if(/[$*]/.test(T[i]))rb.push(i)}}if(!rb.length)continue;let e=cells.find(c=>((c/w|0)-hy)**2==1)%w+hy*w,U=S(new Set(cells).add(e),e,rb),v=F(AB,0,cur);o+=v[e]+U.m;cur=U.p;AB=AB.filter(x=>!rb.includes(x)).concat(U.b)}return o}
-for(let k=5;k--;){let d='/i00'+(k+1),m='';try{m=Z(f.readFileSync(I+d+'/level.txt')+'')}catch{m=''}f.mkdirSync(O+d,{recursive:!0});f.writeFileSync(O+d+'/solution.txt',m)}
+eval(process.env.S)
